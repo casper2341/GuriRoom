@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -18,12 +19,28 @@ import androidx.compose.ui.window.DialogProperties
 import com.guri.guriroom.room.User
 
 @Composable
-fun EditDialog(state: UiState, modifier: Modifier = Modifier, triggerEvent: (UserListEvents) -> Unit) {
+fun EditDialog(
+    state: UiState,
+    modifier: Modifier = Modifier
+        .padding(horizontal = 8.dp, vertical = 16.dp)
+        .fillMaxWidth(),
+    triggerEvent: (UserListEvents) -> Unit
+) {
     Dialog(
-        onDismissRequest = {  },
-        properties = DialogProperties(dismissOnBackPress = true, usePlatformDefaultWidth = false, dismissOnClickOutside = true),
+        onDismissRequest = { },
+        properties = DialogProperties(
+            dismissOnBackPress = true,
+            usePlatformDefaultWidth = false,
+            dismissOnClickOutside = true
+        ),
         content = {
-            Column(modifier = Modifier.padding(8.dp).fillMaxWidth().background(color = Color.Yellow)) {
+            Column(
+                modifier = modifier.background(
+                    color = Color.Yellow,
+                    shape = RoundedCornerShape(10.dp)
+                )
+            ) {
+                Text(text = "Edit User", modifier = modifier)
                 OutlinedTextField(
                     value = state.editUser.name,
                     onValueChange = { newName ->
@@ -31,7 +48,7 @@ fun EditDialog(state: UiState, modifier: Modifier = Modifier, triggerEvent: (Use
                     },
                     label = { Text(text = "Name") },
                     placeholder = { Text(text = "") },
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = modifier,
                 )
                 OutlinedTextField(
                     value = state.editUser.email,
@@ -40,7 +57,7 @@ fun EditDialog(state: UiState, modifier: Modifier = Modifier, triggerEvent: (Use
                     },
                     label = { Text(text = "Name") },
                     placeholder = { Text(text = "") },
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = modifier,
                 )
                 Row(
                     modifier = Modifier
