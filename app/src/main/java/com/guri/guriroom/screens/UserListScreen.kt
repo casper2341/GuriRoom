@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun UserListScreen(viewModel: UserListViewModel) {
 
-   val state = viewModel.state
+    val state = viewModel.state
 
     if (state.openDialog) {
         EditDialog(state = state, triggerEvent = viewModel::triggerEvent)

@@ -8,8 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 
 @Dao
-interface UserDao
-{
+interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)
 
@@ -23,5 +22,5 @@ interface UserDao
     fun fetchAllUsers(): List<User>
 
     @Query("SELECT * FROM `user-table` where id=:id")
-    fun fetchUsers(id:Int): User
+    fun fetchUsers(id: Int): User
 }

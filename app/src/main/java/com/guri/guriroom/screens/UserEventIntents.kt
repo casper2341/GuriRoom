@@ -2,7 +2,6 @@ package com.guri.guriroom.screens
 
 import com.guri.guriroom.room.User
 
-
 sealed class UserListEvents {
     data class UserNameChanged(val name: String) : UserListEvents()
     data class UserEmailChanged(val email: String) : UserListEvents()

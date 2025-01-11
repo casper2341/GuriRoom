@@ -56,12 +56,10 @@ class UserListViewModel constructor(
                     }
 
                     is UserListEvents.OpenDialog -> {
-                        Log.d("GURDEEP", "open dialog: ${it.user}")
                         state = state.copy(openDialog = true, editUser = it.user)
                     }
 
                     is UserListEvents.UpdateUser -> {
-                        Log.d("GURDEEP", "handleIntent: ${it.user}")
                         updateUser(it.user)
                         state = state.copy(openDialog = false)
                     }
@@ -94,7 +92,6 @@ class UserListViewModel constructor(
 
     private fun updateUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
-            Log.d("GURDEEP", "updateUser: $user")
             userDao?.update(user)
             getAllUser()
         }
